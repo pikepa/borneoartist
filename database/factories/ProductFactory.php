@@ -30,7 +30,7 @@ class ProductFactory extends Factory
             'size'          => $this->faker->randomElement(["4' x 4'", '100cms x 100 cms', '1.5m x 2m']),
             'status'        => $this->faker->randomElement(['For Sale', 'Sold', 'Not for Sale']),
             'price'         => $this->faker->numberBetween(12300, 50000),
-            'discount'      => 'Yes',
+            'discount'      => '0',
             'owner_id'      => User::factory()->create()->id,
             'likes'         => $this->faker->numberBetween(10, 50),
             'publish_at'    => $this->faker->date,            //
