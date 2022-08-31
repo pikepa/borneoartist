@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Models\Page;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -14,7 +13,7 @@ class AddingPagesTest extends TestCase
     public function can_add_pages()
     {
         $this->withoutExceptionHandling();
-        
+
         Livewire::test('pages.manage-pages')
             ->set('name', 'About Me')
             ->set('title', 'Hellen Dutch')
