@@ -1,11 +1,10 @@
 <?php
 
 use App\Models\Product;
-use function PHPUnit\Framework\assertSame;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use function PHPUnit\Framework\assertSame;
 
 // uses(RefreshDatabase::class);
-
 
 it('has a path', function () {
     $product = Product::factory()->make();
@@ -14,7 +13,7 @@ it('has a path', function () {
 });
 
 test('a Product has an Owner', function () {
-    $product = Product::factory()->create(['owner_id'=>99]);
+    $product = Product::factory()->create(['owner_id' => 99]);
 
     $this->assertEquals('99', $product->owner_id);
 });

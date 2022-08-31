@@ -49,17 +49,16 @@ test('logged in users can create a product', function () {
             'owner_id' => '99',
             'likes' => '10',
             'publish_at' => '2010-05-03',
-            'categories' => [1,2,3],
+            'categories' => [1, 2, 3],
 
         ])->assertSuccessful()->assertSee('My Title');
 
-        $insertedProduct = Product::get()->last()   ;
+    $insertedProduct = Product::get()->last();
 
     $this->assertDatabaseHas('products', [
         'title' => 'My Title',
-        'status' => 'For Sale'
+        'status' => 'For Sale',
     ]);
-
 
     $this->assertDatabaseHas('category_product', [
         'product_id' => $insertedProduct->id,
@@ -78,9 +77,9 @@ test('guests cannot view the edit a product page', function () {
 test('a logged in user can view and edit a product page', function () {
     $user = User::factory()->create();
     $product = Product::factory()->create();
-    
+
     $response = $this->actingAs($user)->get('/product/'.$product->id.'/edit');
-    
+
     $response->assertStatus(200)
              ->assertSee($product->title)
              ->assertSee('My Product');
@@ -112,7 +111,7 @@ test('A logged in user can update a product', function () {
 
     $this->assertDatabaseHas('category_product', [
         'product_id' => $product->id,
-        'category_id' => [1,2,3],
+        'category_id' => [1, 2, 3],
     ]);
 });
 
