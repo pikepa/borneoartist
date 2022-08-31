@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class UploadImageController extends Controller
 {
@@ -34,5 +33,4 @@ class UploadImageController extends Controller
 
         return redirect('/product/'.$request->product_id);
     }
-
 }

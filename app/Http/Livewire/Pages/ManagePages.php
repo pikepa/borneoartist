@@ -51,7 +51,7 @@ class ManagePages extends Component
             'name' => 'required | min:5| max:24 |unique:pages',
             'title' => 'required | min:5| max:24',
             'featured_img' => '',
-            'active'=> 'required | in:0,1',
+            'active' => 'required | in:0,1',
         ]);
 
         Page::create([

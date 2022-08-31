@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Product;
-use App\Rules\PriceGtZero;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductFormRequest;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use App\Models\Product;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -26,6 +23,7 @@ class ProductController extends Controller
         $products = Product::orderBy('publish_at', 'desc')->Paginate(6);
 
         $cat = '';
+
         return view('homepages.home', compact('products', 'cat'));
     }
 
@@ -78,7 +76,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findorFail($id);
-        
+
         $images = $product->getMedia('photos');
 
         $foundcats = $product->categories;
@@ -99,6 +97,7 @@ class ProductController extends Controller
 
         $product = Product::findorFail($product->id);
         $assignedCats = $product->categories->pluck('id')->toArray();
+
         return view('products.edit', compact('product', 'assignedCats'));
     }
 
@@ -111,7 +110,6 @@ class ProductController extends Controller
      */
     public function update(StoreProductFormRequest $request, Product $product)
     {
-
         $request->publish_at = new Carbon($request->get('publish_at'));
         $product->update($request->except(['categories']));
         $product->categories()->sync($request->categories);
@@ -127,8 +125,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-
-     //   $this->authorize('manage', $product);
+        //   $this->authorize('manage', $product);
 
         $product->delete();
 

@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Livewire\User\Profile;
-use App\Http\Controllers\UserController;
-use App\Http\Livewire\Messages\ContactMe;
-use App\Http\Livewire\Dashboard\Dashboard;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\UploadImageController;
-use App\Http\Livewire\Messages\DisplayMessages;
 use App\Http\Controllers\Images\ImageController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UploadImageController;
+use App\Http\Controllers\UserController;
+use App\Http\Livewire\Dashboard\Dashboard;
+use App\Http\Livewire\Messages\ContactMe;
+use App\Http\Livewire\Messages\DisplayMessages;
+use App\Http\Livewire\User\Profile;
 
 Route::redirect('/', 'root');
 Route::mediaLibrary();
@@ -27,7 +27,6 @@ Route::get('/uploadtest', function () {
 
 /* Home Routes web security */
 Route::group(['middleware' => 'web'], function () {
-
     Route::get('/', [ProductController::class, 'index'])->name('root');
     Route::view('/theartist', 'homepages.theartist')->name('theartist');
     Route::view('/atwork', 'homepages.atwork')->name('atwork');
@@ -35,7 +34,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/contactme', ContactMe::class)->name('contactme');
     Route::view('/coming_soon', 'homepages.comingsoon')->name('comingsoon');
     Route::view('/loadimages', 'images.load')->name('loadimages');
-
 });
 
 Route::get('/status/{status}', [ProductController::class, 'status'])->name('productStatus');
@@ -51,7 +49,7 @@ Route::name('images.')->group(function () {
     Route::get('/images', [UploadImageController::class, 'index'])->name('index');
     Route::get('/images/{product}/load', [UploadImageController::class, 'load'])->name('load');
     Route::post('/images/upload', [UploadImageController::class, 'upload'])->name('upload');
-    
+
     Route::get('/images/{product}/{image}/featured', [ImageController::class, 'make_featured'])->name('makefeatured');
     Route::get('/images/{image}', [ImageController::class, 'show'])->name('show');
     Route::get('/images/{image}/delete', [ImageController::class, 'destroy'])->name('destroy');

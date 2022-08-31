@@ -32,16 +32,16 @@ class ContactMe extends Component
             'my_question' => 'required',
         ]);
 
-        if (strtoupper($this->my_question) !== env("KEY_WORD")) {
+        if (strtoupper($this->my_question) !== env('KEY_WORD')) {
             return view('livewire.messages.contact-me');
         }
         $message = new Message;
 
         Message::create([
-            'name' =>$this->name,
-            'email' =>$this->email,
-            'subject' =>$this->subject,
-            'content' =>$this->content,
+            'name' => $this->name,
+            'email' => $this->email,
+            'subject' => $this->subject,
+            'content' => $this->content,
         ]);
 
         return redirect('/');
