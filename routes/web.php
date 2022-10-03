@@ -11,7 +11,7 @@ use App\Http\Livewire\Messages\DisplayMessages;
 use App\Http\Livewire\User\Profile;
 
 Route::redirect('/', 'root');
-Route::mediaLibrary();
+
 /**
  * App Routes.
  */
