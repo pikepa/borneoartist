@@ -13,7 +13,7 @@
                         {{ __('Login') }}
                     </div>
                     @env('local')
-                    <!-- <x-login-link class="font-semibold bg-grey-lightest text-grey-darkest py-3 px-6 mb-0 shadow-inner" email="pikepeter@gmail.com" /> -->
+                    <x-login-link class="font-semibold bg-grey-lightest text-grey-darkest py-3 px-6 mb-0 shadow-inner" email="pikepeter@gmail.com" />
                     @endenv
                     <form class="w-full p-6" method="POST" action="{{ route('login') }}">
                         @csrf
