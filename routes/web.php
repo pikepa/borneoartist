@@ -1,16 +1,14 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Images\ImageController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UploadImageController;
-use App\Http\Controllers\UserController;
-use App\Http\Livewire\Dashboard\Dashboard;
-use App\Http\Livewire\Messages\ContactMe;
-use App\Http\Livewire\Messages\DisplayMessages;
 use App\Http\Livewire\User\Profile;
-
-Route::redirect('/', 'root');
+use App\Http\Controllers\UserController;
+use App\Http\Livewire\Messages\ContactMe;
+use App\Http\Livewire\Dashboard\Dashboard;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UploadImageController;
+use App\Http\Livewire\Messages\DisplayMessages;
+use App\Http\Controllers\Images\ImageController;
 
 /**
  * App Routes.

@@ -9,6 +9,7 @@
   </label>
 </div>
 
+<input name="slug" type="hidden" >
 
 <div class="field mb-6">
   <label class="block">

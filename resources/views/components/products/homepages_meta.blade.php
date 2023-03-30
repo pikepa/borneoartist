@@ -1,5 +1,5 @@
-<meta property="og:site_name" content="Hellen Dutch Art.">
-<meta property="og:title" content="Hellen Dutch Art : {{$product->title}}">
+<meta property="og:site_name" content="Borneo Artis.">
+<meta property="og:title" content="Borneo Artist : {{$product->title}}">
 <meta property="og:description" content="{!! nl2br($product->description) !!}">
 <meta property="og:image" content="{{URL::asset( $product->featured_img)}}">
 <meta property="og:url" content="{{ url()->current()}}">

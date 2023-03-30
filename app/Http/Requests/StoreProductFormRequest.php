@@ -26,13 +26,14 @@ class StoreProductFormRequest extends FormRequest
         return [
             'featured_img' => '',
             'title' => 'required|min:4|max:124',
+            'slug' => 'nullable',
             'description' => 'required|min:10|max:1500',
             'medium' => 'required',
             'size' => 'required',
             'status' => 'required|in:For Sale,Not For Sale,Sold,',
             'price' => 'required ',
             'discount' => 'required',
-            'publish_at' => 'required|date',
+            'publish_at' => 'nullable|date',
             'categories' => '',
         ];
     }
