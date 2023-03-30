@@ -5,7 +5,7 @@
                     <span x-show="open" ><i class="fa fa-arrow-left  text-md" aria-hidden="true"></i></span>
             </div>
 
-        <div x-show="open" x-transition.duration.2s class="w-56 p-4 bg-gray-200 max-w-sm rounded-lg overflow-hidden shadow  mr-4 pl-4 -mt-8 ">
+        <div x-cloak x-show="open" x-transition.duration.2s class="w-56 p-4 bg-gray-200 max-w-sm rounded-lg overflow-hidden shadow  mr-4 pl-4 -mt-8 ">
             <x-menus.group groupname='Home' class="pr-36">
                 <x-menus.item routename='root'>Catalogue</x-menus.item>
                 <x-menus.item routename='theartist'>The Artist</x-menus.item>
