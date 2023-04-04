@@ -25,7 +25,7 @@ class ManagePages extends Component
 
     public $updateMode = false;
 
-    public $active = false;
+    public $active = 0;
 
     public $addPageVisible = false;
 
@@ -51,7 +51,7 @@ class ManagePages extends Component
             'name' => 'required | min:5| max:24 |unique:pages',
             'title' => 'required | min:5| max:24',
             'featured_img' => '',
-            'active'=> 'required | in:false,true',
+            'active' => 'required | in:0,1',
         ]);
 
         Page::create([

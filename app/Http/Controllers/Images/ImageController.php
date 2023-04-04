@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Images;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ImageController extends Controller
@@ -19,7 +18,6 @@ class ImageController extends Controller
         //  May use this later
     }
 
-
     /**
      * Display the specified resource.
      *
@@ -33,7 +31,6 @@ class ImageController extends Controller
         return view('images.show', compact('image'));
     }
 
-
     /**
      * Make an Image the featured image for a Product.
      *
@@ -42,7 +39,6 @@ class ImageController extends Controller
      */
     public function make_featured($prod_id, $image_id)
     {
-        
         $product = Product::find($prod_id);
 
         $product->update(['featured_img' => $image_id]);
@@ -50,15 +46,13 @@ class ImageController extends Controller
         return redirect()->back();
     }
 
-    
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $image_id )
+    public function destroy($image_id)
     {
         $mediaitem = Media::find($image_id)->delete();
 

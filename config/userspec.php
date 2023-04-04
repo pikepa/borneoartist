@@ -22,7 +22,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may specify a specific word , and the placeholder text to be
-    | entered on the messages screen to validate it's a human and not a 
+    | entered on the messages screen to validate it's a human and not a
     | bot
     |
     */

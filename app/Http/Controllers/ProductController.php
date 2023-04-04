@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Product;
-use App\Rules\PriceGtZero;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Http\Requests\StoreProductFormRequest;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProductController extends Controller
 {
@@ -23,9 +21,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('publish_at', 'desc')->Paginate(6);
+        $products = Product::Published()->Paginate(9);
 
         $cat = '';
+
         return view('homepages.home', compact('products', 'cat'));
     }
 
@@ -36,7 +35,7 @@ class ProductController extends Controller
      */
     public function status($status)
     {
-        $products = Product::OfStatus($status)->paginate(6);
+        $products = Product::OfStatus($status)->paginate(9);
         $cat = '';
 
         return view('homepages.home', compact('products', 'cat'));
@@ -61,9 +60,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreProductFormRequest $request)
-    {
+    {   $validated = $request->except(['categories']);
+        $validated['slug'] = Str::slug($validated['title']);
+
         $request->publish_at = new Carbon($request->get('publish_at'));
-        $product = auth()->user()->products()->create($request->except(['categories']));
+        $product = auth()->user()->products()->create($validated);
         $product->categories()->sync($request->categories);
 
         return redirect($product->path());
@@ -78,7 +79,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findorFail($id);
-        
+
         $images = $product->getMedia('photos');
 
         $foundcats = $product->categories;
@@ -99,6 +100,7 @@ class ProductController extends Controller
 
         $product = Product::findorFail($product->id);
         $assignedCats = $product->categories->pluck('id')->toArray();
+
         return view('products.edit', compact('product', 'assignedCats'));
     }
 
@@ -111,9 +113,12 @@ class ProductController extends Controller
      */
     public function update(StoreProductFormRequest $request, Product $product)
     {
-
+        $validated = $request->except(['categories']);
+        $validated['slug'] = Str::slug($validated['title']);
         $request->publish_at = new Carbon($request->get('publish_at'));
-        $product->update($request->except(['categories']));
+
+        $product->update($validated);
+
         $product->categories()->sync($request->categories);
 
         return redirect($product->path());
@@ -127,8 +132,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-
-     //   $this->authorize('manage', $product);
+        //   $this->authorize('manage', $product);
 
         $product->delete();
 

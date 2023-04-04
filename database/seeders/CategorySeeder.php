@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -21,10 +20,10 @@ class CategorySeeder extends Seeder
 
         DB::table('categories')->insert([
             'category' => 'Category 2',
-        ]); 
-        
+        ]);
+
         DB::table('categories')->insert([
             'category' => 'Category 3',
-        ]); 
-   }
+        ]);
+    }
 }

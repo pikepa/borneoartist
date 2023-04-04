@@ -4,7 +4,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 
-uses(RefreshDatabase::class);
+// uses(RefreshDatabase::class);
 
 it('redirects unauthorised to login guest loads the dashboard page', function () {
     $this->get('/dashboard')->assertRedirect('/login');

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Livewire\Livewire;
 use App\Models\Message;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class ManageMessageTest extends TestCase
 {
@@ -27,7 +27,7 @@ class ManageMessageTest extends TestCase
                 ->set('email', 'pikepeter@gmail.com')
                 ->set('subject', 'this is the subject field')
                 ->set('content', 'this is the content of the message')
-                ->set('my_question', env("KEY_WORD"))
+                ->set('my_question', env('KEY_WORD'))
                 ->call('save');
 
         $this->assertDatabaseHas('messages', ['name' => 'Peter Pike']);
