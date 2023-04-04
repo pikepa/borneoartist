@@ -25,18 +25,19 @@
             </x-menus.group>
             <x-menus.group groupname='Quick Searches'>
                 <ul class="">
-                    <li><a href="{{ url('/') }}" class="hover:font-semibold no-underline">All works of Art</a></li>
+                    <li><a href="{{ url('/') }}" class="hover:font-semibold no-underline">All Published Products</a></li>
                     <li><a href="{{ url('/status/For Sale') }}" class="hover:font-semibold">Available for Sale</a></li>
                     <li><a href="{{ url('/status/Sold') }}" class="hover:font-semibold">Sorry Sold Already</a></li>
                     <li><a href="{{ url('/status/Not for Sale') }}" class="hover:font-semibold no-underline">Not for Sale</a></li>
                     @guest
                     <li class="hover:font-semibold"><a href="{{ url('login') }}"></i>Sign In</a></li>
-                    @endguest
+                    @endguestsail doqwn
                 </ul>
             </x-menus.group>
             @auth
             <x-menus.group groupname='Admin'>
                 <ul>
+                    <x-menus.item routename='dashboard'>Unpublished</x-menus.item>
                     <x-menus.item routename='dashboard'>Dashboard</x-menus.item>
                     <x-menus.item routename='product.create'>Add New Item.</x-menus.item>
                     <x-menus.item routename='messages'>Show Messages.</x-menus.item>

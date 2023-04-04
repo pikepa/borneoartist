@@ -22,6 +22,10 @@ class Product extends Model implements HasMedia
      */
     public function getPublishedDateAttribute()
     {
+        if(!$this->publish_at)
+        {
+            return "Not Published";
+        }
         return $this->publish_at->format('M j, Y');
     }
 
@@ -60,10 +64,22 @@ class Product extends Model implements HasMedia
         return $query->where('status', $status)->orderBy('publish_at', 'desc');
     }
 
-    public function setSlugAttribute($value)
+    public function scopePublished($query)
     {
-        $this->attributes['slug'] = Str::slug($value);
+        $dateExists=$this->publish_at;
+        if($dateExists){
+            return $query->orderBy('publish_at', 'desc');
+        }
     }
+
+    public function scopeUnpublished($query)
+    {
+        $dateExists=$this->publish_at;
+        if(!$dateExists){
+            return $query->where('publish_at',null)->orderBy('created_at', 'desc');
+        }
+    }
+
 
     public function path()
     {

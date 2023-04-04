@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('publish_at', 'desc')->Paginate(9);
+        $products = Product::Published()->Paginate(9);
 
         $cat = '';
 
