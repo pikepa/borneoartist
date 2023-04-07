@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Livewire\User\Profile;
-use App\Http\Controllers\UserController;
-use App\Http\Livewire\Messages\ContactMe;
-use App\Http\Livewire\Dashboard\Dashboard;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\UploadImageController;
-use App\Http\Livewire\Messages\DisplayMessages;
 use App\Http\Controllers\Images\ImageController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UploadImageController;
+use App\Http\Controllers\UserController;
+use App\Http\Livewire\Dashboard\Dashboard;
+use App\Http\Livewire\Messages\ContactMe;
+use App\Http\Livewire\Messages\DisplayMessages;
+use App\Http\Livewire\User\Profile;
 
 /**
  * App Routes.
@@ -17,10 +17,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/profile', Profile::class)->name('profile');
     Route::get('/message', DisplayMessages::class)->name('messages');
-});
-
-Route::get('/uploadtest', function () {
-    return view('livewire.images.upload');
 });
 
 /* Home Routes web security */

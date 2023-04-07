@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
 use App\Models\Product;
-use function PHPUnit\Framework\assertSame;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use function PHPUnit\Framework\assertSame;
 
 // uses(RefreshDatabase::class);
 
@@ -33,7 +33,6 @@ test('when the product title is changed the slug changes', function () {
     $updatedProduct = Product::find($product->id);
 
     $this->assertEquals('new-product-title', $updatedProduct->slug);
-    
 });
 
 test('a Product has an Owner', function () {

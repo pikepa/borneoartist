@@ -31,7 +31,7 @@
                     <li><a href="{{ url('/status/Not for Sale') }}" class="hover:font-semibold no-underline">Not for Sale</a></li>
                     @guest
                     <li class="hover:font-semibold"><a href="{{ url('login') }}"></i>Sign In</a></li>
-                    @endguestsail doqwn
+                    @endguest
                 </ul>
             </x-menus.group>
             @auth
