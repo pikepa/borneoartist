@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Product;
-use Illuminate\Support\Str;
 use App\Http\Requests\StoreProductFormRequest;
+use App\Models\Product;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -60,7 +60,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreProductFormRequest $request)
-    {   $validated = $request->except(['categories']);
+    {
+        $validated = $request->except(['categories']);
         $validated['slug'] = Str::slug($validated['title']);
 
         $request->publish_at = new Carbon($request->get('publish_at'));

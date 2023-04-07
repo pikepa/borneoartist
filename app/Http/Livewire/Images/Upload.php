@@ -25,6 +25,7 @@ class Upload extends Component
     {
         return view('livewire.images.upload');
     }
+
     public function submit()
     {
         $this->validate([
@@ -37,6 +38,6 @@ class Upload extends Component
             ->usingName($this->fileName->getClientOriginalName())
             ->toMediaCollection('photos', 's3');
 
-        return redirect('/product/' . $this->product_id);
+        return redirect('/product/'.$this->product_id);
     }
 }

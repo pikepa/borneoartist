@@ -2,19 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
-use Spatie\MediaLibrary\HasMedia;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Product extends Model implements HasMedia
 {
     use InteractsWithMedia, HasFactory;
 
-    protected $casts = [ 'publish_at'=>'datetime'];
-    
+    protected $casts = ['publish_at' => 'datetime'];
+
     protected $guarded = [];
 
     /**
@@ -22,10 +21,10 @@ class Product extends Model implements HasMedia
      */
     public function getPublishedDateAttribute()
     {
-        if(!$this->publish_at)
-        {
-            return "Not Published";
+        if (! $this->publish_at) {
+            return 'Not Published';
         }
+
         return $this->publish_at->format('M j, Y');
     }
 
@@ -66,20 +65,19 @@ class Product extends Model implements HasMedia
 
     public function scopePublished($query)
     {
-        $dateExists=$this->publish_at;
-        if($dateExists){
+        $dateExists = $this->publish_at;
+        if ($dateExists) {
             return $query->orderBy('publish_at', 'desc');
         }
     }
 
     public function scopeUnpublished($query)
     {
-        $dateExists=$this->publish_at;
-        if(!$dateExists){
-            return $query->where('publish_at',null)->orderBy('created_at', 'desc');
+        $dateExists = $this->publish_at;
+        if (! $dateExists) {
+            return $query->where('publish_at', null)->orderBy('created_at', 'desc');
         }
     }
-
 
     public function path()
     {
