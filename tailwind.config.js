@@ -489,4 +489,13 @@ module.exports = {
       require('@tailwindcss/custom-forms'),
       require('@tailwindcss/typography')
 ],
+purge: [
+
+  './resources/**/*.blade.php',
+
+  './resources/**/*.js',
+
+  './resources/**/*.vue',
+
+],
 }
