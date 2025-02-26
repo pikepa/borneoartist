@@ -104,7 +104,7 @@ class Product extends Model implements HasMedia
     }
 
     // Media Definitions
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumb')
         ->width(300)
