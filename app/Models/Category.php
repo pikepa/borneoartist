@@ -16,7 +16,7 @@ class Category extends Model
     //
     public function products()
     {
-        return $this->belongsToMany(Product::class)->orderBy('publish_at', 'desc');
+        return $this->belongsToMany(Product::class,'category_product')->orderBy('publish_at', 'desc');
     }
 
     public function path()
