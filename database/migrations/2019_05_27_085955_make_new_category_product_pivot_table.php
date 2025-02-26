@@ -10,7 +10,7 @@ class MakeNewCategoryProductPivotTable extends Migration
     {
         Schema::create('category_product', function (Blueprint $table) {
             $table->integer('category_id')->unsigned();
-            $table->integer('Product_id')->unsigned();
+            $table->integer('product_id')->unsigned();
         });
     }
 
